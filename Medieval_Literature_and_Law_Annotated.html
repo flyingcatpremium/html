@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medieval Literature and Law — Complete Annotated Reading</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1b2a4a;
+  --navy-light: #2a3d66;
+  --cream: #faf8f4;
+  --text-primary: #2c2c2c;
+  --text-secondary: #5a5a5a;
+  --text-light: #8a8a8a;
+  --border: #e2ddd5;
+  --card-bg: #f5f2ec;
+  --q1-color: #c17767; --q1-bg: #faf0ed; --q1-border: #e0a99b;
+  --q2-color: #7a9e7e; --q2-bg: #eef5ef; --q2-border: #a8c9ab;
+  --q3-color: #8b7eb8; --q3-bg: #f0eef7; --q3-border: #b3a9d4;
+  --q4-color: #c4a35a; --q4-bg: #faf5e8; --q4-border: #ddc585;
+  --q5-color: #6a9bb5; --q5-bg: #ebf3f7; --q5-border: #9dc2d4;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Lora',Georgia,serif; background:var(--cream); color:var(--text-primary); line-height:1.75; font-size:15px; }
+
+.top-nav { background:var(--navy); color:#fff; padding:18px 32px; position:relative; z-index:100; }
+.top-nav h1 { font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:17px; letter-spacing:.3px; margin-bottom:4px; }
+.top-nav .subtitle { font-family:'IBM Plex Sans',sans-serif; font-weight:300; font-size:12px; opacity:.7; letter-spacing:.5px; text-transform:uppercase; }
+.legend-bar { display:flex; gap:14px; margin-top:12px; flex-wrap:wrap; }
+.legend-item { font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:500; display:flex; align-items:center; gap:5px; opacity:.9; }
+.legend-dot { width:9px; height:9px; border-radius:50%; display:inline-block; flex-shrink:0; }
+
+.chapter-nav { position:sticky; top:0; z-index:90; background:#fff; border-bottom:1px solid var(--border); padding:0 32px; overflow-x:auto; white-space:nowrap; box-shadow:0 2px 8px rgba(27,42,74,.06); }
+.chapter-nav a { display:inline-block; font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:500; color:var(--text-secondary); text-decoration:none; padding:11px 14px; border-bottom:2px solid transparent; transition:all .2s; }
+.chapter-nav a:hover, .chapter-nav a.active { color:var(--navy); border-bottom-color:var(--navy); }
+
+.main-content { max-width:1400px; margin:0 auto; padding:28px 24px 80px; }
+.section-heading { font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:600; color:var(--navy); text-transform:uppercase; letter-spacing:1.5px; margin:44px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--navy); display:flex; align-items:center; gap:8px; }
+.section-heading .sec-num { background:var(--navy); color:#fff; font-size:11px; padding:2px 8px; border-radius:3px; }
+
+.para-row { display:grid; grid-template-columns:1fr 370px; gap:24px; margin-bottom:24px; align-items:start; }
+.original-text { font-family:'Lora',Georgia,serif; font-size:15px; line-height:1.78; color:var(--text-primary); padding:14px 18px; border-left:3px solid var(--border); background:#fff; border-radius:0 6px 6px 0; }
+.original-text .page-num { font-family:'IBM Plex Sans',sans-serif; font-size:10px; color:var(--text-light); float:right; margin-left:8px; background:var(--card-bg); padding:1px 5px; border-radius:3px; }
+.fn { font-size:12.5px; color:var(--text-light); margin-top:10px; border-top:1px solid var(--border); padding-top:6px; line-height:1.5; }
+
+mark.q1 { background:var(--q1-bg); border-bottom:2px solid var(--q1-color); padding:1px 2px; }
+mark.q2 { background:var(--q2-bg); border-bottom:2px solid var(--q2-color); padding:1px 2px; }
+mark.q3 { background:var(--q3-bg); border-bottom:2px solid var(--q3-color); padding:1px 2px; }
+mark.q4 { background:var(--q4-bg); border-bottom:2px solid var(--q4-color); padding:1px 2px; }
+mark.q5 { background:var(--q5-bg); border-bottom:2px solid var(--q5-color); padding:1px 2px; }
+
+.annotation-col { display:flex; flex-direction:column; gap:8px; }
+.anno-card { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; line-height:1.6; padding:12px 14px; border-radius:5px; border-left:4px solid; }
+.anno-card.q1 { background:var(--q1-bg); border-left-color:var(--q1-color); }
+.anno-card.q2 { background:var(--q2-bg); border-left-color:var(--q2-color); }
+.anno-card.q3 { background:var(--q3-bg); border-left-color:var(--q3-color); }
+.anno-card.q4 { background:var(--q4-bg); border-left-color:var(--q4-color); }
+.anno-card.q5 { background:var(--q5-bg); border-left-color:var(--q5-color); }
+.anno-card .tag { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:5px; display:inline-block; padding:1px 6px; border-radius:3px; color:#fff; }
+.anno-card.q1 .tag { background:var(--q1-color); }
+.anno-card.q2 .tag { background:var(--q2-color); }
+.anno-card.q3 .tag { background:var(--q3-color); }
+.anno-card.q4 .tag { background:var(--q4-color); }
+.anno-card.q5 .tag { background:var(--q5-color); }
+.anno-card strong { font-weight:600; }
+
+.block-quote { margin:10px 0 10px 16px; padding:8px 14px; border-left:3px solid var(--border); font-size:13.5px; color:var(--text-secondary); background:var(--card-bg); border-radius:0 4px 4px 0; }
+.verse-block { margin:10px 0 10px 16px; padding:8px 14px; border-left:3px solid var(--border); font-size:13.5px; color:var(--text-secondary); background:var(--card-bg); border-radius:0 4px 4px 0; font-style:italic; white-space:pre-line; }
+.trans-block { margin:4px 0 10px 16px; padding:6px 14px; font-size:13px; color:var(--text-light); }
+
+.worksheet { max-width:1400px; margin:0 auto; padding:0 24px 80px; }
+.worksheet-title { font-family:'IBM Plex Sans',sans-serif; font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px; padding-bottom:12px; border-bottom:3px solid var(--navy); }
+.worksheet-subtitle { font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:var(--text-light); margin-bottom:24px; }
+.ws-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:20px; }
+.ws-card { background:#fff; border-radius:8px; padding:22px; border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,.04); }
+.ws-card .ws-tag { font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:700; color:#fff; padding:3px 10px; border-radius:4px; display:inline-block; margin-bottom:8px; }
+.ws-card.q1 .ws-tag{background:var(--q1-color)}.ws-card.q2 .ws-tag{background:var(--q2-color)}.ws-card.q3 .ws-tag{background:var(--q3-color)}.ws-card.q4 .ws-tag{background:var(--q4-color)}.ws-card.q5 .ws-tag{background:var(--q5-color)}
+.ws-card h3 { font-family:'IBM Plex Sans',sans-serif; font-size:14px; font-weight:600; color:var(--text-primary); margin-bottom:3px; }
+.ws-card .ws-q-cn { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; color:var(--text-light); margin-bottom:12px; }
+.ws-section { margin-bottom:12px; }
+.ws-section-title { font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.6px; color:var(--text-secondary); margin-bottom:3px; }
+.ws-section p { font-family:'IBM Plex Sans',sans-serif; font-size:13px; line-height:1.6; color:var(--text-primary); }
+
+@media(max-width:900px){
+  .para-row{grid-template-columns:1fr}
+  .ws-grid{grid-template-columns:1fr}
+  .top-nav,.chapter-nav{padding-left:12px;padding-right:12px}
+  .main-content,.worksheet{padding-left:12px;padding-right:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <h1>Chapter 15 · Medieval Literature and Law</h1>
+  <div class="subtitle">Richard Firth Green — <em>The Cambridge History of Medieval English Literature</em> (ed. David Wallace, 1999), pp. 407–431</div>
+  <div class="legend-bar">
+    <span class="legend-item"><span class="legend-dot" style="background:var(--q1-color)"></span>Q1 Three Approaches 三种路径</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--q2-color)"></span>Q2 Oral vs Written Law 口头法vs书写法</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--q3-color)"></span>Q3 Formalism &amp; Injustice 形式主义与不正义</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--q4-color)"></span>Q4 Literary Responses 文学回应</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--q5-color)"></span>Q5 Nostalgia &amp; Folklaw 怀旧与民间法</span>
+  </div>
+</div>
+
+<nav class="chapter-nav" id="chapnav">
+  <a href="#sec1">I Introduction</a>
+  <a href="#sec2">II Legal Texts</a>
+  <a href="#sec3">III Year Books</a>
+  <a href="#sec4">IV Law in Literature</a>
+  <a href="#sec5">V Oral vs Written</a>
+  <a href="#sec6">VI Folklaw &amp; Oath</a>
+  <a href="#sec7">VII Formalism</a>
+  <a href="#sec8">VIII Disrepute</a>
+  <a href="#sec9">IX Three Responses</a>
+  <a href="#sec10">X Langland &amp; Mum</a>
+  <a href="#sec11">XI The Outlaw</a>
+  <a href="#sec12">XII Nostalgia</a>
+  <a href="#sec13">XIII Battle &amp; Ordeal</a>
+  <a href="#sec14">XIV Conclusion</a>
+  <a href="#worksheet">Worksheet</a>
+</nav>
+
+<div class="main-content">
+
+<!-- ═══ SEC I: Introduction p.407 ═══ -->
+<h2 class="section-heading" id="sec1"><span class="sec-num">I</span> Introduction (p. 407)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 407</span>
+In addition to serious and personal matters that lie beyond the scope of this essay (such as accusations of rape directed at Chaucer and Malory), <mark class="q1">scholars who investigate the interrelationship of literature and law are generally interested in one of two main topics: the formal question of legal writing as a species of literature, or the thematic question of the law as it has been represented in literature.</mark> The first approach is often restricted to a somewhat <em>belle-lettristic</em> discussion of the work of noted legal stylists such as Oliver Wendell Holmes, but it can extend to a more subtle analysis of legal forms: the adversarial trial as agonistic drama, for instance, or the witness's deposition as narrative. At its most extreme, as in Stanley Fish's impudent interrogation of the text of the American constitution, it is likely to appear irrelevant, if not downright offensive, to many practising lawyers. The second, and commoner, approach is generally less controversial. Many authors have been interested in legal matters and many literary works present fictional trials or lawsuits, so that a minor critical genre has grown up analysing the trials of Shylock or Billy Budd or the progress of Jarndyce vs. Jarndyce or the proceedings against Josef K, in terms of either legal history or general jurisprudential principles. <mark class="q1">There remains, however, a third area of investigation: regarding the law and literature as parallel forms of discourse, each with its own conventions and traditions, the scholar asks how the lawyer's comparatively more formal analysis of mental or social processes can help us understand what the imaginative writer sometimes leaves unspoken or expresses only obliquely.</mark> 'It would be strange indeed', as Owen Barfield has written, 'if the study of jurisprudence were not well adapted to throw light on the mind and its workings'.<sup>1</sup> This approach proves particularly effective in the service of historical explication, and is especially valuable when we come to consider the frequently opaque mentalities of the medieval and early modern period. In what follows I shall inevitably be most concerned with the first two topics, but I hope aspects of the third will emerge in the course of the discussion.
+<div class="fn">1. Barfield, 'Poetic Fiction', p. 126.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q1"><span class="tag">Q1 核心论点</span>
+  <p><strong>段落功能：</strong>全章导论，建立分析框架。</p>
+  <p><strong>论证链：</strong>Green 提出研究"文学与法律"的三条路径：①法律文本作为文学形式（formal）；②文学中的法律再现（thematic）；③法律与文学作为平行话语体系（parallel discourse）。第三条是 Green 最原创的贡献，借助法律的形式分析来理解文学中的隐含意义，尤其适用于中世纪的"不透明心态"。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC II: Legal Texts as Literature pp.408–409 ═══ -->
+<h2 class="section-heading" id="sec2"><span class="sec-num">II</span> Legal Texts as Literature (pp. 408–409)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 408</span>
+The question of the literary character of English medieval legal texts can be dealt with fairly quickly. Much recent critical thinking has tended to deprecate a canon, not only of favoured literary works, but also of exclusively literary forms, so that much that was once consigned to the literary penumbra is now being brought into the full critical glare. In theory, medieval legal texts should be as open to rhetorical or narratological analysis as those of later periods, but some obvious difficulties present themselves. <mark class="q1">In the first place, very few medieval law texts are written in English.</mark> The great flood of vernacular legal writing in Anglo-Saxon England, unparalleled elsewhere in Europe, except perhaps Ireland, dries to a trickle after the Conquest, and, with the sole exception of Fortescue's <em>Governance of England</em>, all the major treatises from the <em>Leges Henrici Primi</em> at the beginning of the twelfth century to Littleton's <em>Tenures</em> at the end of the fifteenth are written either in Latin or law French. Only the canon law, with such jejune practical handbooks as those of John Mirk and William of Shoreham, has any vernacular tradition to speak of. The same predominance of Latin and French is found, at least down to the fifteenth century, in both legislation and court reporting. Though occasional scraps of English (such as the rhyme that Robbins calls, somewhat misleadingly, the 'Yorkshire Partisans') can turn up in legal documents,<sup>2</sup> the records of the central courts were kept almost exclusively in French;<sup>3</sup> only the court of Chancery, which rose to prominence in the fifteenth century, regularly accepted petitions and depositions in English.<sup>4</sup> At around the same period we find borough courts turning to English, and the London records collected by Chambers and Daunt, along with the borough customs printed by Bateson, preserve some of our most valuable vernacular legal texts. In Scotland the picture is much the same, with the major treatises, like the <em>Regiam Majestatem</em>, written in Latin, and only borough ordinances, such as the <em>Leges Quatuor Burgorum</em>, in the vernacular.<sup>5</sup>
+<div class="fn">2. Robbins, ed., <em>Historical Poems</em>, pp. 60–1; this poem was copied into the <em>coram rege</em> roll for Easter 1392 (see Sayles, ed., <em>Select Cases</em> (1971), pp. 84–5).<br>3. A handful of vernacular deeds and affidavits, mostly from the fifteenth century, are printed in the collections of Morsbach and Flasdieck.<br>4. See Baildon, ed., <em>Select Cases</em>; other early cases are printed in the introduction to the first volume of the <em>Calendars of Proceedings</em>. See also Fisher, Richardson and Fisher, eds., <em>Anthology</em>.<br>5. The <em>Leges Quatuor Burgorum</em> are printed in Innes, ed., <em>Ancient Laws and Customs</em>, pp. 4–58.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q1"><span class="tag">Q1 路径一的困难</span>
+  <p><strong>段落功能：</strong>展开路径一（法律文本作为文学），揭示其两大障碍。</p>
+  <p><strong>障碍①：</strong>征服后英语法律文本极少，主要法律文献用拉丁语或法语写成。只有衡平法院（15世纪）和自治市法庭才开始接受英语。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC III: Year Books pp.409–410 ═══ -->
+<h2 class="section-heading" id="sec3"><span class="sec-num">III</span> The Year Books &amp; <em>Mirror of Justices</em> (pp. 409–410)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 409</span>
+A second difficulty concerns the nature of legal reporting. The major reports of cases heard in the king's courts from the 1290s to the 1530s are preserved in what are known as the year books; indeed, so important are these reports for legal historians that they will often refer to the late Middle Ages as the year-book period. The legal jargon of the year books presents a formidable obstacle to the non-specialist, however, and, even when this has been surmounted, their actual contents will frequently prove to be unsatisfying. Given the fact that they seem to have been compiled as a record of knotty points of pleading for the guidance of barristers and law students, this is entirely understandable, but it makes for some pretty turgid reading.
+</div>
+<div class="annotation-col">
+  <div class="anno-card q1"><span class="tag">Q1 障碍②</span>
+  <p><strong>年鉴（Year Books）：</strong>法律行话难懂，内容令人失望。它们是为律师和法学生编辑的辩论要点记录，读起来非常枯燥。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 409</span>
+Those who look to the year books for evidence of the more sensational aspects of medieval English life will be sadly disappointed; in S. F. C. Milsom's words, 'information from the records of law-suits, both about the law and about life, is unexpectedly oblique'.<sup>6</sup> Here for instance, in translation, is the complete year-book account of a case heard in the court of Common Pleas early in the fourteenth century:
+<div class="block-quote">Replevin brought against A.; avowry upon a stranger; the plaintiff says that he and his wife were jointly enfeoffed of the tenements to hold of the chief lord of the fee, and without her he cannot answer or charge the tenements; and he prayed aid of her.<br><em>Roston.</em> You are a total stranger to our avowry, and so is she of whom you pray aid.<br><em>Hedon.</em> Were our wife here we could drive you to avow upon us as upon those who are enfeoffed to hold of the chief lord etc., and without her we cannot do that. Judgement etc.<br>Aid was granted. It was also granted in a similar case. But the husband, before he had aid, was driven to show to the Court the deed which witnessed the feoffment.<sup>7</sup></div>
+There is presumably, as in any lawsuit, a human drama here somewhere, but it is precious hard to detect. We gather that an overlord (A) is alleged to have distrained the plaintiff's chattels for some failure of feudal duties, and that when the plaintiff tries to get the court to force A to return them he finds that he must first prove that he is A's rightful tenant; this he can only do if the court agrees to allow him to produce his wife, who is joint tenant with him. He, or rather his counsel, Serjeant Hedon, obtains this vital permission, but we learn nothing further of the case, nor, more importantly, can we begin to guess at its ultimate rights and wrongs. Has the plaintiff been trying to evade his legitimate feudal duties, or is the defendant trying to drive him off his land by legalized extortion? On the evidence presented by the reporter there seems no way of knowing for sure.
+<div class="fn">6. Introduction to Pollock and Maitland, <em>History of English Law</em>, vol. i, p. lxx.<br>7. Maitland, ed., <em>Year Books</em>, p. 98.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q1"><span class="tag">Q1 年鉴案例</span>
+  <p><strong>功能：</strong>以完整年鉴案例演示"无血色"特征。一个关于扣押动产的案件，仅记录了程序性的辩论要点（replevin, avowry, aid prayer），完全看不到背后的人性戏剧或案件的是非曲直。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 410</span>
+Even the most elaborate year-book cases share this feeling of bloodlessness – pathological specimens preserving little sense of the living organisms from which they have been extracted. The corresponding Plea Rolls will at least report complete proceedings, but their dense bureaucratic formulas render them scarcely less sterile.<sup>8</sup> Things are only slightly better on the criminal side, where the thirteenth-century <em>Placita Corone</em> and the King's Bench cases recorded in the <em>coram rege</em> rolls do manage to give some slight sense of forensic life. There is, however, nothing in England to match the vivid depositions from France known as letters of remission, which Natalie Zemon Davis puts to such good use in <em>Fiction in the Archives</em>. <mark class="q1">Only one legal treatise, the much maligned, late thirteenth-century <em>Mirror of Justices</em>, might conceivably repay serious literary analysis.</mark> It is called a 'romance' by Holdsworth and a 'satire' by Pollock and Maitland, though few literary scholars would readily associate it with either genre;<sup>9</sup> it does however exhibit a social vision and a moral commitment all too rare in most legal writing of the period.
+<div class="fn">8. For an interesting glimpse behind the bureaucratic formulas see Clanchy, 'Medieval Realist'.<br>9. Holdsworth, <em>History of English Law</em>, vol. ii, p. 333; Pollock and Maitland, <em>History of English Law</em>, vol. i, p. 28.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q1"><span class="tag">Q1 小结</span>
+  <p>年鉴和卷宗都"无血色"——像病理标本。英国没有可与法国"赦免书"（Davis, <em>Fiction in the Archives</em>）相比的生动法律叙事。唯一例外是《正义之镜》（<em>Mirror of Justices</em>），被Holdsworth称为"罗曼司"，被Pollock和Maitland称为"讽刺"。它罕见地展现了社会愿景和道德承诺。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC IV: Literary Texts and the Law pp.410–411 ═══ -->
+<h2 class="section-heading" id="sec4"><span class="sec-num">IV</span> Why Law Figures So Heavily in Medieval Literature (pp. 410–411)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 410</span>
+<mark class="q2">In turning from legal texts as literature to literary texts concerned with the law we quickly pass from famine to feast.</mark> From the <em>Owl and the Nightingale</em> at the beginning of our period to Robert Henryson's <em>Fables</em> at the end, an enormous number of medieval works take the form of legal disputes, couch their allegories as legal proceedings, exploit the dramatic situation of a fictional courtroom, masquerade as actual legal documents, or lean heavily on the lawyer's terms of art for their imagery and diction. This huge field is expertly surveyed by John Alford in what is still the best single article on the subject, and there is an abundance of further material in Alford and Seniff's bibliography. It is not my primary intention to review this material here, however, but rather to ask <mark class="q2">why it was that the law figures so much more heavily in medieval literature than in the literature of later periods.</mark><sup>10</sup>
+<div class="fn">10. Fehr's <em>Das Recht in der Dichtung</em> devotes approximately 40 per cent of its space to the medieval period. Should an equivalent survey ever be undertaken for English literature, the proportion would no doubt be similar. See Alford 'Literature and Law'; Alford and Seniff, eds., <em>Literature and Law</em>.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q2"><span class="tag">Q2 核心问题</span>
+  <p><strong>过渡段：</strong>从"法律文本作为文学"（匮乏）转向"文学中的法律"（丰盛）。提出全章核心问题：为什么法律在中世纪文学中的分量远超后世？</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 410–411</span>
+The first answer is clearly the one given by Alford, that <mark class="q2">people in the Middle Ages regarded divine, natural and human law as merely different aspects of a single ordering principle.</mark> Their 'profound faith in law as the tie that binds all things, in heaven and in earth' (p. 942), meant that secular law could never be hived off, as in our post-Hobbesian world, from questions of morality or even theology. When a fourteenth-century lyricist figures heaven as an entailed estate which can only be inherited though a marriage alliance with the Virgin Mary (p. 947), this need not be read as some kind of outlandish metaphysical conceit, but simply as a natural translation from one system of law to another. 'Medieval lawyers', writes A. W. B. Simpson, 'did not possess the categories corresponding to the modern notions of immortality or public policy'.<sup>11</sup> The author of the <em>Mirror of Justices</em>, for instance, would have found great difficulty understanding our readiness to recognize some actions as immoral but not illegal or vice versa: he calls law, 'nothing else but the rules laid down by our holy predecessors in Holy Writ for the salvation of souls from everlasting damnation' (p. 2), and in his subsequent discussion of the minutiae of common-law procedure he repeatedly uses the word 'sin' where we would expect terms like 'crime' or 'offence': 'it is an abuse to amerce a man on the warrant of a presentment of a personal trespass, since no one is amerciable save for sin [<em>pecchie</em>] in a real or mixed action' (p. 159).<sup>12</sup> <mark class="q2">The only thing I would wish to add to Alford here is the suggestion that the medieval attitude to legal order as a universal principle was as much a natural inheritance from the customary law of pre-twelfth-century Europe as the creation of the theologians and canonists of the high Middle Ages.</mark> 'The peoples of Western Europe', writes Harold Berman of the old folklaw, 'were not conscious of any clear distinction between legal institutions and other institutions of social cohesion such as religion or government or general custom',<sup>13</sup> and it was this deeply rooted view of the nature of law, I believe, that schoolmen such as Thomas Aquinas found themselves articulating at a later period.
+<div class="fn">11. Simpson, <em>History of the Common Law of Contract</em>, p. 110.<br>12. See also Usk, <em>Testament</em>, iii.i, ll. 96–128.<br>13. Berman, 'Background', p. 553.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q2"><span class="tag">Q2 回答一</span>
+  <p><strong>Alford 的解释：</strong>中世纪人视神法、自然法、人法为统一秩序——世俗法不可能与道德/神学切割。《正义之镜》用"罪"（sin）代替"犯罪"（crime）。</p>
+  <p><strong>Green 的补充：</strong>这种观念不仅来自经院哲学（Aquinas），也深植于12世纪前欧洲习惯法传统（folklaw）中——Berman：在旧民间法中，法律制度与宗教、政府、一般习俗不可区分。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC V: Oral vs Written Law pp.411–412 ═══ -->
+<h2 class="section-heading" id="sec5"><span class="sec-num">V</span> England's Legal Hybrid: Oral vs Written (pp. 411–412)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 411–412</span>
+<mark class="q2">This insight seems to me important for understanding a distinctive aspect of the literary treatment of law in the Middle Ages, particularly in England.</mark> While England was not the only European country where an oral tradition of customary law continued to flourish long after the twelfth-century rediscovery of Justinian, it certainly resisted the more mature systems of written law fostered by the canonists and civilians far more stubbornly than Italy or southern France (the 'pays du droit écrit'). It is true that northern France (the 'pays du droit coutumier') continued to follow customary law to the end of the Middle Ages and beyond, but this law remained regional and discrete, quite distinct from the law of the Paris Parlement and the central administration. In England, however, <mark class="q2">customary law had become institutionalized in the royal courts as early as Henry II's reign and as a result English medieval law developed into a curious kind of legal hybrid, its operation heavily dependent on the literate machinery of a centralized bureaucracy whilst its fundamental principles remained those of an archaic oral tradition.</mark> This is the main reason why medieval English legal records are so much less accessible to the modern imagination than those of the Continent: 'the Year Books are dark', writes Milsom, 'because still in the shadow of the old monolithic law suit'.<sup>14</sup>
+<div class="fn">14. Introduction to Pollock and Maitland, <em>History of English Law</em>, vol. i, p. lxx.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q2"><span class="tag">Q2 核心论点</span>
+  <p><strong>"法律混血体"：</strong>英国独特——习惯法早在 Henry II 时就被制度化于王室法庭，形成一个奇特的混合体：运作依赖中央官僚书写机器，但根本原则仍属古老口头传统。这就是为什么年鉴"晦暗难懂"（Milsom）。与意大利、南法（成文法区）和北法（习惯法但地方分散）都不同。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 412</span>
+The formative period of the English common law conforms perfectly to Fritz Kern's characterization of the confrontation between oral and written systems of law. <mark class="q2">Oral law, like much else in traditional culture, is a remarkable amalgam of formalism and pragmatism.</mark> People will express absolute faith in a system of law that they claim to regard as immutable, inexorable and infallible, yet at the same time they will tacitly manipulate and circumvent this system in any way they feel necessary to maintain social harmony. <mark class="q3">Such unacknowledged malleability could hardly survive the kind of bureaucratization imposed on the Anglo-Saxon <em>folcriht</em> by Henry II's chancery. Writing freezes legal procedure, even procedure that is no longer appropriate or just, into a set of inflexible rules justified by an appeal to tradition which quickly becomes tyrannical.</mark> Where oral process had once been free to remember those judicial forms that seemed most equitable, literate process was forced to abandon equity to the mercy of a formalism it felt powerless to alter, and which it could only circumvent by egregious legal fictions. In Fritz Kern's words, a law which 'itself remains young, always in the belief that is old' was ousted by a law in which 'the dead text retains power over life'.<sup>15</sup>
+<div class="fn">15. Kern, <em>Kingship and Law</em>, p. 179.<br>16. See, for example, Rosen, <em>The Anthropology of Justice</em>.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q2"><span class="tag">Q2 Fritz Kern</span>
+  <p><strong>口头法：</strong>"形式主义与务实主义的奇妙融合"——声称不变，实则灵活。</p>
+  <p><strong>书写法：</strong>冻结程序为僵化规则→"死文字凌驾于生活之上"（Kern）。口头程序可以"选择性记忆"最公平的司法形式；书写程序被迫放弃公平，屈服于自己无力改变的形式主义。</p>
+  </div>
+  <div class="anno-card q3"><span class="tag">Q3 过渡</span>
+  <p>书写法冻结程序 → 形式主义暴政 → 法律与正义之间的鸿沟。此段为 Q3 奠定因果基础。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC VI: Folklaw & Oath pp.412–414 ═══ -->
+<h2 class="section-heading" id="sec6"><span class="sec-num">VI</span> Folklaw: Oath, Ordeal, and the Isold Episode (pp. 412–414)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 412</span>
+<mark class="q5">The archetypal mode of proof in the old folklaw trial, as in many countries still today,<sup>16</sup> was exculpation by oath.</mark> Those of high status might be allowed to swear an unsupported oath that they were innocent of the charges brought against them, but most litigants would have been required to provide oath-helpers or witnesses to swear alongside them. In particularly difficult cases courts could turn to trial by battle or trial by ordeal, but these too were designed ultimately to verify an oath – unilaterally in the case of ordeal, bilaterally with battle. The precise wording of the oath to be tested was one of the most important questions to be settled during the course of the folklaw trial and the elaborate negotiations surrounding this wording lay at the very heart of folklaw procedure. They were to become a vital part of its procedural legacy to the common law of the later Middle Ages.
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 Folklaw核心</span>
+  <p><strong>宣誓免罪（exculpation by oath）：</strong>旧民间法的原型证据方式。辅以誓言帮手（oath-helpers）、决斗或神裁——最终都是验证誓言。誓言措辞的协商是审判的核心程序。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 413</span>
+In his account of the trial of Queen Isold for adultery, Thomas of Britain says that before she was put to the ordeal of the hot iron the noblemen present 'wrangled over her oath-formula' ('þrættu um eiðstaf hennar'); 'some', he adds, 'wanted to restrict and oppress her and others to assist her in formulating the oath' ('sumir vilja þreyngja henni ok angra hana, en sumir vilja hjálpa henni um eiðstafinn').<sup>17</sup> Charges of adultery must always have presented plaintiffs with a problem, for common decency would have proscribed some of the more graphic ways of wording the oath of exculpation, and in this case the queen's social status must have made it a particularly delicate matter. No doubt such oaths were especially vulnerable to the kind of equivocation that Isold subsequently employs, but in principle all those called upon to swear a judicial oath must have found themselves arguing for a wording which precisely fitted their own situation against opponents ever on guard against possible chicanery. <mark class="q5">Isold, however, has cleverly provided herself with a defence in advance:</mark> as in the ballad of <em>Clerk Saunders</em><sup>18</sup> – where May Margaret uses her lover's sword to lift the latch of her chamber door and, having bound her eyes, carries him bodily to her bed, so that she may later swear, 'her oth to save', that she had not let him in, nor had she seen him that night, nor had he set foot on her bedroom floor (stanzas 4–9) – Isold had laid the groundwork for an ostensibly watertight oath before the trial even began. Since the ordeal is to take place on the far side of a river, Isold has arranged that Tristan, disguised as a poor pilgrim, shall lift her from the boat; when they reach the bank, she hoists her dress and he falls on top of her – as the Scottish metrical version <em>Sir Tristrem</em> puts it, 'next her naked side' (2251). Isold is thus able to offer King Mark an oath that no man has come close to her naked except the king himself and the poor pilgrim who had helped her from the boat. Unable to find anything wrong with this oath, Mark allows her to go to the proof, where she sets her hand to the red-hot iron without flinching and carries it with no sign of fear. Thomas makes it clear that this noble fortitude fully vindicates her in the eyes of the community, and God accordingly grants her reconciliation and concord ('sætt ok samþykki') with her husband. Unlike his successors, Béroul and Gottfried Von Strassburg, Thomas sees nothing ironic in the fact that Isold's equivocation should have brought about this most satisfactory of folklaw verdicts: honour appeased and dissension healed.
+<div class="fn">17. Kölbing, ed., <em>Tristrams Saga</em>, p. 73 (the ordeal episode is preserved in a thirteenth-century Norse translation of the original twelfth-century Anglo-Norman poem, now surviving only in fragments).<br>18. Child, ed., <em>English and Scottish Popular Ballads</em>, vol. ii, pp. 156–67 (no. 69).</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 Isold案例</span>
+  <p><strong>Isold 的誓言博弈：</strong>巧妙安排 Tristan 扮朝圣者在渡河时倒在她身上 → 誓言在技术上为真（"除国王和穷朝圣者外无人靠近她的身体"）→ 通过热铁神裁。Thomas of Britain 对此<strong>毫无讽刺</strong>：民间法的理想结果是"荣誉恢复、纷争消弭"。</p>
+  <p><strong>对照：</strong>后来的 Béroul 和 Gottfried 对同一情节持讽刺态度——大陆 vs 英国的分野。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC VII: Formalism & Estoppel pp.414–416 ═══ -->
+<h2 class="section-heading" id="sec7"><span class="sec-num">VII</span> Literate Formalism, Estoppel, and the Gap Between Law and Justice (pp. 414–416)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 414</span>
+<mark class="q3">In the wake of Henry II's administrative reforms, however, the verbal equivocation, the 'wrangling over the oath-formula', that must have occupied so much of the folklaw trial, became frozen by literate formalism into a quite absurd game of legal riddling, and by the fourteenth century had opened up a yawning gap between law and justice.</mark> Mistake was no defence against the pleader who sought to non-suit an opponent for an injudicious choice of words, while a literal interpretation, no matter how alien to common sense, would always override a plea based on intended meaning. One does not have to search far in the fourteenth-century year books to find examples of grotesquely formalistic reasoning, of petrified procedural rules making a mockery not only of justice but of common sense. The exceptional judge might sometimes appeal to a pleader's honour or good faith when faced with a particularly egregious legal travesty, but he had every reason to expect the kind of answer Chief Justice Bereford received in 1319: 'It is not right that conscience should prevent you giving us our legal due' – a response that, predictably, forced Bereford to back down.<sup>19</sup> A couple of illustrations of the principle that 'form ought to be as much followed as substance' may stand for all.<sup>20</sup>
+<div class="fn">19. Collas and Plucknett, eds., <em>Year Books</em>, p. 84.<br>20. Pike, ed., <em>Year Books</em> (1886), pp. 108–9.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q3"><span class="tag">Q3 核心论点</span>
+  <p><strong>关键转折：</strong>Henry II 改革后，民间法的口头博弈被书写形式主义冻结为"荒谬的法律谜语游戏"。字面解释压倒本意。Bereford 大法官（1319）被律师反驳："良心不应阻止你给予我们法律上的权利"——法官只能退让。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 414–415</span>
+In 1340 the Duke of Lancaster sought to recover property from a tenant who had apparently defaulted on his feudal dues. In the original writ this property had been described as a toft [homestead] but the tenant replies that it is in reality a fish-pond. So obvious an error might be expected to have been disastrous for the duke's case, but ironically factual slips might be treated far more indulgently than procedural ones. In pleading, the assumption seems to have been that allegations could not ordinarily be rebutted 'merely by attacking their details',<sup>21</sup> but this principle evidently did not apply where the detail was seen as an essential part of a set form. In this case, at least, the judges rule that there is nothing wrong with calling a fish-pond a toft. The tenant now moves to a second line of defence: he holds the fish-pond/toft jointly with his wife Alice, he says, and since the original writ does not mention Alice it is automatically invalid. Now that, says Justice Stonor, would have been a very good plea, had he not already raised the question of the fish-pond, for when he objected to the term 'toft' he did so on his own behalf and not jointly in the name of himself and his wife. This oversight costs the tenant his case, for the court holds that he has denied himself the possibility of subsequently pleading joint tenancy by the form in which he made his first plea; 'his mouth', as Justice Shareshull puts it, 'is stopped [<em>estope</em>] by his own supposition'.<sup>22</sup> <mark class="q3">The principle at work here is one known to modern lawyers as estoppel (the legal doctrine which prevents parties denying the truth of statements they have themselves previously made)</mark> and is one that presumably grew out of the need to limit interminable debate in an oral context (analogous in this respect to many of the 'rules of order' used by committees and associations nowadays). Applied with the literalism of a judgement such as this, however, the rule will clearly offer a rich source of formalistic casuistry; this was especially true when the estoppel rule was transferred from oral pleading to legal documents.
+<div class="fn">21. Sutherland, 'Legal Reasoning', p. 190.<br>22. Pike, ed., <em>Year Books</em> (1888), pp. 234–7.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q3"><span class="tag">Q3 鱼塘案 1340</span>
+  <p><strong>禁止反言（estoppel）：</strong>佃户先以个人名义抗辩"toft"实为鱼塘 → 后来想主张与妻子共同持有 → 被禁止，因为他第一次抗辩是以个人名义（未提及妻子）。Shareshull 法官："他的嘴被自己的假设堵住了。"</p>
+  <p>Estoppel 原本在口头语境中限制无休止争论，但被书写法字面化后成为形式主义诡辩的温床。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 415</span>
+To take an example from the Ricardian period, the year books for 1389 record a case arising out of a land grant which was drawn up by a careless lawyer in the following form: 'I have given and granted to Cristine my daughter and her heirs for her marriage all the lands and tenements which I have in a certain vill . . . and if it should be that the said Cristine should die without heir of her body then [the land is to revert]'. Cristine does indeed appear to have died childless and the reversioner (perhaps her elder brother) duly claimed his estate, only to be met with the argument that the original entail was invalid. There is no doubt that what the donor <em>intended</em> was to give the lands in tail to his daughter and her direct descendants, but he foolishly omitted the words 'of her body begotten' after the phrase 'to Cristine my daughter and her heirs'. Even though the subsequent clause, 'if it should be that the said Cristine die without heir of her body' made quite clear that that is what he meant, the estoppel rule gave the first clause precedence over the second, allowed the son-in-law to declare himself Cristine's heir (though not of course 'of her body'), and claim unrestricted title to the land.<sup>23</sup> <mark class="q3">In both this and the previous case estoppel takes on a dangerously inferential cast: one is bound not merely by what one says but by the implications of what one has failed to say.</mark> This principle might have been useful to a King Mark trying to deal with the equivocations of his wife, but rigorously applied in a world of writs and charters (and meticulously divorced from all consideration of the writer's intention) it quickly becomes tyrannical.
+<div class="fn">23. Plucknett, ed., <em>Year Books</em>, pp. 25–31. St German's student remarks that a special treatise would be needed to deal with all such cases, 'where the intent of the parties will be frustrated because it is not in accordance with the law' (<em>Doctor and Student</em>, ed. Plucknett and Barton, p. 143).</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q3"><span class="tag">Q3 Cristine案 1389</span>
+  <p><strong>文字遗漏的后果：</strong>赠与人本意将土地限嗣继承给女儿及其直系后代，但遗漏了"of her body begotten"→ 女婿声称自己是"继承人"（虽然不是"她身体所出"）→ 获得完全产权。Estoppel 使第一条款压倒第二条款——即使第二条款明确表达了真实意图。</p>
+  <p><strong>关键句：</strong>"一个人不仅受制于自己说过的话，也受制于自己<em>未能说出之话</em>的含义。"</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC VIII: Disrepute pp.416–418 ═══ -->
+<h2 class="section-heading" id="sec8"><span class="sec-num">VIII</span> Common Law in Disrepute: Violence Against Judges (pp. 416–418)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 416</span>
+<mark class="q3">Hardly surprisingly such institutionalized casuistry had brought the common law into grave disrepute by the fourteenth century – less 'a shield for the weak and oppressed', as Holdsworth puts it, than 'a sword for the unscrupulous'.<sup>24</sup></mark> Not until the age of Bentham and Dickens was justice to be again as 'dilatory, expensive, uncertain, and remote'<sup>25</sup> as it was in Langland's England; there was, however, to be no medieval counterpart to the great Victorian wave of reforming legislation set on foot by the Reform Act of 1832. Statutory attempts at control were generally ineffectual and often misplaced, and only with the opening up of new avenues of litigation such as the court of Chancery in the fifteenth century and the development of elaborate procedural fictions, particularly 'trespass on the case', to outflank some of the more grotesque abuses was there to be any prospect of relief for the hard-pressed litigant. <mark class="q3">The situation was made all the worse by the fact that people in the Middle Ages had far higher expectations of justice than we do; where we are unsurprised to find that our legal system is no less subject to error than any other product of human ingenuity, medieval people trusted it to mirror a higher order, and their indignation was correspondingly all the greater when it failed them.</mark> As a consequence it could be an undignified and sometimes dangerous job being a judge in fourteenth-century England.
+<div class="fn">24. Holdsworth, <em>History of English Law</em>, vol. ii, p. 416.<br>25. Sir Thomas Erskine May quoted by Plucknett, <em>Concise History of the Common Law</em>, p. 73.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q3"><span class="tag">Q3 社会后果</span>
+  <p><strong>"无赖的利剑"：</strong>普通法声名狼藉。直到狄更斯时代正义才再次如此"迟缓、昂贵、不确定、遥远"。中世纪人期望法律映射更高秩序，失望因此更深。成为法官是一份"不体面且有时危险的工作"。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 416–417</span>
+In the 1380s two chief justices of King's Bench came to a violent end. Sir John Cavendish had his head stuck on a pole over the stocks in Bury St Edmunds during the course of the Peasants' Revolt and his successor Sir Robert Tresilian, arrested by a howling mob chanting 'We have him! We have him!', was sent to a Tyburn scaffold by the Lords Appellant. Others were evidently hardly more popular: Justice Willoughby, arraigned 'by clamour of the people' in 1341 for selling 'the laws as if they had been oxen or cows', may have been the most notorious,<sup>26</sup> but he was far from the only fourteenth-century judge to suffer such public vilification.<sup>27</sup> Even so distinguished a figure as Sir William Shareshull could hardly be said to have carried out his judicial duties in an atmosphere of ordered solemnity. In 1329, while still a serjeant, he was violently assaulted near St Paul's wharf, and four years later, when he was justice of Common Pleas, two knights, Sir William and Sir Richard Harcourt, assaulted his servants and goods at York; three years after that a 'multitude of armed men' threatened his assizes in Wiltshire, and the next year, his houses at Bromsgrove were attacked by a 'large group of malefactors including a vicar and two chaplains'. In 1340 he was arrested with other judges for 'having borne [himself] in divers manners fraudulently and unfaithfully', though, unlike Willoughby, he seems never to have been tried, and was back at work by 1342. Three years later the monks of St Swithun's disrupted his courtroom and at Tredington two years after that his sessions were broken up 'by a scandalous attack made by evildoers'. In the 1350s two of his properties were attacked, one by a parson, the other by a knight, and in 1358 a number of men were arrested for making threats against him, one of them a clerk who is reported to have said that he 'would gladly strike' the judge. It is little wonder that Shareshull seems to have decided to take early retirement in 1361.<sup>28</sup> Unsurprisingly, the crown in the fourteenth century appears to have had some difficulty in recruiting men to judgeships and serjeanties.
+<div class="fn">26. Pike, ed., <em>Year Books</em> (1889), pp. 258–9.<br>27. McKisack, <em>Fourteenth Century</em>, p. 205.<br>28. Putnam, <em>Sir William Shareshull</em>, pp. 4–5, 63, 74, 147–8.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q3"><span class="tag">Q3 法官遭暴力</span>
+  <p><strong>Cavendish：</strong>1381年农民起义中被斩首示众。<strong>Tresilian：</strong>被暴民逮捕送上绞刑架。<strong>Willoughby：</strong>1341年被控"像卖牛一样卖法律"。<strong>Shareshull：</strong>从1329到1358年反复遭暴力攻击（骑士、武装暴徒、教区牧师、修道士），1361年提前退休。王室在14世纪难以招募法官。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 417</span>
+<mark class="q3">What comes through in the reports of such incidents, despite the crabbed officialdom of their language, is the sense of moral outrage that drove people to resist the king's judges.</mark> The knight's wife who, in 1340, accosted a justice of King's Bench on his way to the courtroom 'with abusive words', calling him 'false and faithless' ('falsum et infidelem'),<sup>29</sup> or the woman who, in 1357, waylaid a justice of Common Pleas on his way to a meeting of the barons of the Exchequer, and called him 'in front of a fair-sized crowd [<em>populo non modico audiente</em>], a false traitor to the king and faithless [<em>falsum proditorem ipsius regis et infidelem</em>], fit to be drawn and hanged',<sup>30</sup> were not isolated extremists; they were expressing a frustration with the intransigence of the law that was shared by many. At Lincoln in 1334 royal justices were so intimidated that they had to set up their court outside the city,<sup>31</sup> and in Ipswich ten years later the murder of a man involved with a commission of Oyer and Terminer provoked a spontaneous rebellion against the king's authority. People of all ranks, we are told, brought presents to the murderers, 'such as food and drink and gold and silver and sang so many songs of rejoicing in their honour there that it was as if God had come down from Heaven'.<sup>32</sup> It is interesting to set Chaucer's urbane portrait of the Man of Law against such a background. Reminded that the poet himself had served on a number of commissions of the peace between 1385 and 1389 alongside several royal serjeants and justices (including the ill-fated Tresilian), we might well find in his picture of a confident and capable professional clear marks of his allegiance to the clerical elite of the king's court.
+<div class="fn">29. Sayles, ed., <em>Select Cases</em> (1958), p. 121.<br>30. Sayles, ed., <em>Select Cases</em> (1939), p. cxxxvi.<br>31. Sayles, ed., <em>Select Cases</em> (1965), p. xxvi.<br>32. Sayles, ed., <em>Select Cases</em> (1965), p. 37.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q3"><span class="tag">Q3 道德愤怒</span>
+  <p><strong>民间反抗：</strong>1340年骑士之妻当面骂法官"虚伪无信"；1357年妇女当众称法官是"叛国贼，该被拖行绞死"。1334年林肯法官被迫在城外开庭。1344年伊普斯维奇一名法庭人员被杀后民众为凶手庆祝，"仿佛上帝从天降临"。这些不是孤立极端分子，而是广泛的"道德愤怒"。</p>
+  <p><strong>Chaucer：</strong>将乔叟笔下的"律师"（Man of Law）置于此背景下——他优雅自信的专业形象暗示了对王室法律精英阶层的认同。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC IX: Three Responses pp.418–420 ═══ -->
+<h2 class="section-heading" id="sec9"><span class="sec-num">IX</span> Three Literary Responses: Satire, Outlaw, Nostalgia (pp. 418–420)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 418</span>
+<mark class="q4">Literary responses to the sorry state of the law in the late Middle Ages generally took one of three forms: predictably some writers turned to satire, while others chose to romanticize opposition to the law in the person of the outlaw; a third group reveal their unease in a nostalgia for the old folklaw and its ways.</mark>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 三重框架</span>
+  <p><strong>段落功能：</strong>提出文学回应的三重框架——①讽刺；②浪漫化亡命徒；③怀旧民间法。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 418</span>
+On the whole, <mark class="q4">medieval legal satire is fairly conventional, a stock element in poems of social complaint.</mark> Fed no doubt by the rhetoric of the popular preacher,<sup>33</sup> tirades against universal venality or against the abuses of the age can always find room for the corrupt judge and the swindling lawyer.<sup>34</sup> Some, such as the early fourteenth-century <em>Beati qui Esuriunt</em>,<sup>35</sup> are witty and skilful pieces, yet their criticism rarely seems to penetrate far beneath the surface. The most one can hope for in this genre is some impression of the simple litigant's bewilderment and sense of alienation in the face of professional indifference, as in these lines from 'London Lickpenny' describing the court of King's Bench:
+<div class="verse-block">Beneth them sat clarkes a gret Rout,
+which fast dyd wryte by one assent;
+There stoode vp one and cryed about,
+'Rychard, Robert, and Iohn of Kent!'
+I wist not well what this man ment,
+he cryed so thycke there in dede.<sup>36</sup></div>
+Like venality satire, formulaic complaints against a world turned upside down ('ȝeft is Domes-man', 'theuys tru men honge', 'mayntenerys be made Iustys'), or a general state of lawlessness ('miht is riht', 'Lex lyth doun over al', 'Many lawys and lityll right'), springing as they do from an enduring and ubiquitous medieval tradition, fail to get to grips with the systemic problems of an institution no longer able to adapt to changing social conditions.
+<div class="fn">33. See Owst, <em>Literature and Pulpit</em>, and Peter, <em>Complaint and Satire</em>.<br>34. See Yunck, <em>Lineage of Lady Meed</em>, and Wenzel, <em>Preachers</em>.<br>35. Wright, ed., <em>Political Songs of England</em>, pp. 224–30.<br>36. Robbins, ed., <em>Historical poems</em>, p. 131 (ll. 15–20).</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 讽刺</span>
+  <p><strong>评价：</strong>中世纪法律讽刺大多是"社会控诉诗的老套元素"，批判流于表面。"London Lickpenny"展示了普通诉讼当事人在法庭的迷茫和疏离感。"颠倒世界"公式化控诉无法触及体制深层问题。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 418–419</span>
+<mark class="q4">Since medieval preconceptions about the nature of law made genuine criticism almost impossible, it was far easier to attack those who administered the law than to examine the shortcomings of the institution itself.</mark> Though John Gower describes the exiles of Justice and her companion, Peace, from the land as the <em>fons et origo mali</em> at the end of the <em>Vox Clamantis</em> (7.1304),<sup>37</sup> even he rarely looks any further for the cause of his country's troubles than a corrupt judiciary, suborned by the rich and intimidated by the powerful. Since they are incapable of analysing the problem in institutional terms most writers in this tradition seem unwilling to look much beyond the ministrations of a just king for its solution: 'if the king hit wiste, I trowe he wolde be wroth', says a poem from Edward II's reign;<sup>38</sup> 'the kyng knowyth not alle, / <em>non sunt qui vera loquuntur</em>', says another from Richard II's.<sup>39</sup> This is the solution Gower, too, endorses, and even the <em>Mirror of Justices</em> regards the king's unwillingness to punish corrupt officials as a major source of legal abuse: with evident relish its dyspeptic author lists forty-four judges whom, he claims, the good King Alfred hanged in a single year 'as homicides for their false judgements' (p. 166). On the other hand, it is typical of writers in this tradition to regard any new law with suspicion:
+<div class="verse-block">Eche ȝeer newe lawe is wrouȝt,
+And false cloþed [MS <em>cloþe falsed</em>] in trouþe wede.<sup>40</sup></div>
+Thus, when they look to the king to correct abuses, they must envisage him not as a source of reforming legislation but simply as a just administrator of good old laws that have fallen into neglect. The <em>Mirror</em> shows surprisingly little respect for the statutory reforms of Edward I, a king Plucknett calls 'the English Justinian', and this distrust of statute law, coupled with his nostalgia for obsolete folklaw procedure, suggests that its author has some sense of the deeper conflict between written and oral law even if he cannot fully articulate it.
+<div class="fn">37. Gower, <em>Latin Works</em>, ed. Macaulay, p. 308.<br>38. 'The simonie', l. 313 (Wright, ed., <em>Political Songs of England</em>, p. 337).<br>39. 'On the times' (Wright, ed., <em>Political Poems and Songs</em>, vol. i, p. 273, ll. 96–7). For further instances of this topos, see Embree, '"The King's Ignorance"'.<br>40. 'Dede is worchyng', ll. 29–30 (Kail, ed., <em>Twenty-Six Political and Other Poems</em>, p. 56).</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 讽刺的局限</span>
+  <p><strong>"国王不知情"话题（topos）：</strong>Gower、Edward II 时期诗人、Richard II 时期诗人——都只能将希望寄托于贤明君主。《正义之镜》声称 Alfred 国王一年绞死44名法官。</p>
+  <p><strong>对新法的怀疑：</strong>"每年都有新法律，虚伪裹在真理的外衣里"。他们理想中的国王不是改革立法者，而是旧好法律的公正执行者。</p>
+  </div>
+  <div class="anno-card q5"><span class="tag">Q5 连接</span>
+  <p>讽刺与怀旧的交集：对成文法的不信任 + 对旧民间法程序的怀念 → 暗示作者感知到了口头法与书写法的深层冲突。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC X: Langland & Mum pp.419–421 ═══ -->
+<h2 class="section-heading" id="sec10"><span class="sec-num">X</span> <em>Mum and the Sothsegger</em>, Langland, and the Folvilles (pp. 419–421)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 419–420</span>
+One place where this conflict rises very close to the surface, however, is the remarkable concluding section of <em>Mum and the Sothsegger</em> where the poet, having learnt from his dream the importance of speaking out against social evils, unknits a bag full of documents 'for[to] conseille þe king' (1343).<sup>41</sup> As it stands his list of assorted legal instruments, together with the abuses they record, is more than 400 lines long, but since the poem lacks an ending and the passage includes a lacuna of two folios, it must originally have run to over 600. <mark class="q4">There is an obvious irony in recording the injustices of an over-bureaucratized judicial system on this jumble of writs, rolls, schedules and scrolls, but the message is not merely implicit in its medium.</mark> A ragman roll tells how,
+<div class="verse-block">yf þe pouer playne, þough he plede euer    [if the poor man complains]
+And hurleth with his higher / hit happeth ofte-tyme    [and contends with his social superior]
+That he wircheth al in waste and wynneth but a lite.
+Thus laboreth þe loos among þe comune peuple    [prevails the opinion]
+That þe wacker in þe writte wol haue þe wors ende.    [the party with the weaker documentary evidence]
+(577–81)</div>
+A 'forelle . . . þat frayed is a lite' (1586) suggests that if measures were taken to prevent the litigious protracting unjust lawsuits to a point where their opponents could no longer afford to defend themselves, 'Hit wold pese þe peuple and many pleyntes bate / And chaunge al þe chauncellerie' (1607–8) – Chancery was, of course, the bureaucratic hub of the legal system. Earlier the poet had urged the chancellor and his officers to 'Haue pitie on þe penylees and þaire pleynte harkeneth' (21), particularly by sparing them the cost of 'The writing of writtz and þe waxe eke' (25). Such charges were not trivial (one fifteenth-century litigant paid over fifty shillings for a single charter),<sup>42</sup> and are symptomatic of the way in which a literate elite exploited the technology of writing to oppress the poor. It is quite clear that for the rebels of 1381, literacy, as Crane says, 'appeared innately to be an instrument of oppression',<sup>43</sup> and their mistrust drove them to destroy archives and legal instruments, both in London and the provinces, with all the fervour of luddites smashing weaving frames. We have Walsingham's testimony that it was 'dangerous for anyone to be found with an ink-horn hanging by his side, for such men hardly ever escaped their hands'.<sup>44</sup>
+<div class="fn">41. Line references within the text are to the EETS edition, ed. Day and Steele.<br>42. Fowler, 'The Cost of a Charter'.<br>43. Crane, 'Writing Lesson', p. 205.<br>44. <em>Historia Anglicana</em>, ed., Riley, vol. ii, p. 9.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 Mum</span>
+  <p><strong><em>Mum and the Sothsegger</em>：</strong>诗人从梦中学到要说真话→解开一袋法律文书"为国王建言"。讽刺在"媒介即信息"层面最尖锐——用大量法律文书记录法律官僚体制的不公。</p>
+  <p><strong>"弱势文书方总是输"：</strong>穷人无论怎么诉讼都白费功夫，因为"文书证据较弱的一方总会败诉"。书写/蜡封的费用本身就是压迫工具。</p>
+  <p><strong>1381年起义：</strong>识字"本质上就是压迫工具"（Crane）。起义者销毁档案和法律文书。带墨水瓶的人随时可能被杀（Walsingham）。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 420–421</span>
+In this matter the author of <em>Mum and the Sothsegger</em> may well have taken his cue from his mentor, William Langland, who makes extensive metaphorical use of legal documents throughout <em>Piers Plowman</em>. The most obvious analogue for the closing section of <em>Mum</em> is the charter which records Mede's marriage settlement in passus 2. Here, at least in the C-text, Mede's father, Favel, enfeoffs his daughter and her future husband, False, with seven estates, corresponding to the Seven Deadly Sins (69–115). Liar is the lawyer who draws up the charter, which is then supervised by Civil, read out by Simony, and witnessed by Wrong and a group of disreputable petty officials. The instrument follows the proper protocol, from the opening formula, <em>Sciant presentes et futuri</em> (78b), to the dating clause, 'in þe date of þe deuel þis dede is aseled' (114), with which it closes. Elsewhere, Langland's attitude to legal documents is more ambivalent: Peace's petition (b.4) and Truth's pardon (b.7) may be ineffectual or ambiguous, but they are not obviously corrupt, and Piers's testament (b.6) looks unimpeachable. Similarly, there seems generally to be little irony in those similes that exploit the literate machinery of the law: an ignorant priest is compared to a badly drafted charter, for instance (b.11.303–8), or the Mosaic law to an unsealed patent which can only be authenticated by Christ's crucifixion (b.17.1–8). There are places where Langland does seem explicitly to recognize the oppressive potential of such legal instruments, however: when Avarice, for example, confesses,
+<div class="verse-block">Swiche dedes I dide write if he his daye breke;
+I haue mo Manoirs þoruȝ Rerages þan þoruȝ <em>Miseretur &amp; com[m]odat</em>
+(b.5.242–3)</div>
+or when a grasping lord tells how he cheats his own reeve:
+<div class="verse-block">I holde it riȝt and reson of my Reue to take
+Al þat myn Auditour or elis my Styward
+Counselleþ me bi hir acounte and my clerkes writynge.
+Wiþ <em>Spritus Intellectus</em> þei [toke] þe reues rolles
+And wiþ <em>Spiritus fortitudinis</em> fecche it, [wole he nel he].
+(b.19.460–4)</div>
+<mark class="q4">Hand in hand with Langland's suspicion of the literate technology of the king's courts, goes a sympathy with the defenders of the old law</mark>, expressed most dramatically by his inclusion of the Folville brothers in a list of the weapons given by Grace to aid the defenders of Unity in their battle with Antichrist:
+<div class="verse-block">And some to ryde and to recouere þat [vnriȝt]fully was wonne:
+He wissed hem wynne it ayein þoruȝ wightnesse of handes
+And fecchen it fro false men wiþ Foluyles lawes.
+(b.19.245–7)</div>
+This, as R. H. Bowers has pointed out,<sup>45</sup> is an allusion to a well-known band of outlaws who defied the king's officers for some time in the early years of Edward III's reign.
+<div class="fn">45. 'Foleuyles Lawes'.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 Langland</span>
+  <p><strong>Langland 与法律文书：</strong>①Mede 的婚约（passus 2）——由 Liar 起草、Simony 宣读、Wrong 见证——是腐败法律文书的典型。②但 Peace 的请愿、Truth 的赦免状、Piers 的遗嘱则是正面或矛盾的——Langland 对法律文书的态度是复杂的。</p>
+  <p><strong>Avarice 的自白与贪婪领主：</strong>Langland 在这些段落中明确揭示法律文书的压迫潜力——通过债务文件获取庄园、利用审计账簿和"书记员的记录"剥削管家。</p>
+  <p><strong>Folvilles' Laws：</strong>Langland 将 Folville 兄弟——一群真实的亡命徒——列入上帝恩典赐予 Unity 捍卫者的"武器"清单！这是对旧法捍卫者的最高认可。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC XI: The Outlaw pp.421–425 ═══ -->
+<h2 class="section-heading" id="sec11"><span class="sec-num">XI</span> The Outlaw: Folvilles, Trailbaston, Robin Hood, Gamelyn (pp. 421–426)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 421–422</span>
+I have suggested that romanticizing the role of the outlaw was a second way in which medieval writers responded to the law's inequities, but, as the example of the Folvilles proves, we should not suppose that the outlaw was a purely fictional creature. <mark class="q4">Outlaws were a real enough presence in late medieval society, and they seem to have felt scant respect for the king's law or its representatives.</mark> In January 1326, Eustace Folville ambushed and killed a judge called Roger Bellers, who was said to have been travelling with a fifty-strong retinue at the time.<sup>46</sup> Bellers was a baron of the exchequer (a judge specializing in tax cases), and some idea of his popular reputation is conveyed by a contemporary lampoon in macaronic verse, which claims that 'of falsnes was he neuer weri' and accuses him of acting 'with the king's power and under cover of the law' ('tum cum vi regis tum cum velamine legis').<sup>47</sup> In 1332 Eustace's brother Richard, a country parson, organized the kidnapping and ransom of an even more senior judge, Sir Richard Willoughby – a future chief justice of King's Bench and a man who was later, as we have seen, to be accused of selling the laws like cows. The Folville brothers were, however, only the most celebrated of many such fourteenth-century outlaws,<sup>48</sup> and though historians have generally regarded them as symptomatic of the endemic lawlessness of the late Middle Ages,<sup>49</sup> <mark class="q4">a case can be made for regarding them rather as what Eric Hobsbawm has called 'social bandits', men who lived according to a clear code: 'God's law and the common custom, which was different from the state's or the lord's law, but nevertheless a social order'.<sup>50</sup></mark>
+<div class="fn">46. Knighton, <em>Chronicon</em>, vol. i, p. 433.<br>47. Bowers, 'Versus'.<br>48. See Stones, 'Folvilles'; Bellamy, 'Coterel Gang', and 'Northern Rebellions'; Hilton, <em>Medieval Society</em>, pp. 248–61; and Saul, <em>Knights and Esquires</em>, pp. 174–83.<br>49. For example, Hanawalt, <em>Crime and Conflict</em>, pp. 201–13.<br>50. Hobsbawm, <em>Bandits</em>, p. 149.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 亡命徒实例</span>
+  <p><strong>Folvilles：</strong>1326年 Eustace 伏击杀死税法法官 Bellers（当代讽刺诗称其"从不厌倦虚伪"）。1332年兄弟 Richard（乡村牧师！）组织绑架了更高级的法官 Willoughby。</p>
+  <p><strong>Hobsbawm "社会匪徒"：</strong>不是单纯的暴力犯罪者，而是遵循"上帝的法律与共同习俗"——一种与国家法不同但自成体系的社会秩序。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 422–423</span>
+Some idea of the mentality of the late medieval outlaw can be gleaned from one of the Harley Lyrics, the 'Outlaw's Song of Trailbaston' – an Anglo-Norman poem, evidently composed shortly after the establishment of trailbaston commissions by Parliament in 1305.<sup>51</sup> The author, who, since he writes in French, was presumably a man of some social standing, represents himself as an old soldier who has been ruined by the legal chicanery of his enemies – men, he says, who would never have dared attack him in person (l. 78):
+<div class="verse-block">Sire, si je voderoi mon garsoun chastier
+De une buffe ou de deus, pur ly amender,
+Sur moi betera bille, e me frad atachier,
+E avant qe isse de prisone raunsoun grant donser.
+(9–12)</div>
+<div class="trans-block">[Sir, if I choose to correct my lad with a blow or two for his own good, he'll slap a summons on me and have me arrested, and before I can get out of prison there'll be a large sum to pay.]</div>
+Since he has no money left for legal costs, his very life is now at stake (75–6), yet he protests, he is neither murderer nor thief (95–6), even though the law has certainly driven others to a life of crime (44–8). When he calls two prominent royal judges, Henry Spigurnel and Roger Belflour, 'gent de cruelté' (35), and characterizes the kind of justice they dispense as capricious – 'trop est doteuse la commune loy' (56) – he leaves us in no doubt where he thinks the real blame lies.
+<div class="fn">51. Aspin, ed., <em>Anglo-Norman Political Songs</em>, pp. 67–78.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 Trailbaston</span>
+  <p><strong>"Outlaw's Song of Trailbaston"：</strong>盎格鲁-诺曼语诗歌（1305年后），作者是有社会地位的老兵，被敌人的法律诡计毁掉。他既非杀人犯也非小偷，但法律的"反复无常"（trop est doteuse la commune loy）已将他逼入绝境。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 423</span>
+The poet draws a striking contrast between the oppression of the king's law and the freedom of life in the greenwood. He has been driven, he says,
+<div class="verse-block">antre bois, suz le jolyf umbray;
+La n'y a fauceté ne nulle male lay,
+En le bois de Belregard, ou vole le jay
+E chaunte russinole touz jours santz delay.
+(17–20)</div>
+<div class="trans-block">[amid the trees, in the fair shade; there is no falsehood or wicked law in the woods of Belregard, where the jay flies free and the nightingale sings all day without interruption.]</div>
+'Come with me', he says to others who have fallen foul of the common law,
+<div class="verse-block">Al vert bois de Belregard, la n'y a nul ploy
+Forque beste savage e jolyf umbroy.
+(54–5)</div>
+<div class="trans-block">[to the green woods of Belregard, where there is no order but the wild creatures and the fair shade.]</div>
+And he concludes by telling us that his poem,
+<div class="verse-block">fust fet al bois, desouz un lorer,
+La chaunte merle, russinole e eyre l'esperver.
+(97–8)</div>
+<div class="trans-block">[was written in the woods, beneath a laurel, where only the blackbird and the nightingale sing and the sparrowhawk 'circles'.]</div>
+It is impossible in translation to bring out the legal wit of such passages. Thus <em>delay</em> (20) can refer to a legal postponement; <em>ploy</em> (54) means not only 'order' (as in 'the natural order') but also 'an action at law'; <em>chanter</em> (20 and 98) can mean 'to pronounce on [in court]' as well as 'to sing'; and <em>eyrer</em> (98) can be used of a travelling royal assize (the Eyre) in addition to its more general sense, 'to wander' (Latin: <em>errare</em>). The reference to the jay's flight (19) may be intended as an ironic allusion to summary imprisonment, since jays were commonly kept as cage birds in the Middle Ages.
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 绿林vs法庭</span>
+  <p><strong>法律双关语：</strong>delay=法律延期/不间断；ploy=诉讼行为/自然秩序；chanter=宣判/歌唱；eyrer=巡回法庭/翱翔。松鸦（jay）的飞翔可能暗指被关在笼中的鸟→对即决监禁的讽刺。</p>
+  <p>绿林 Belregard = 没有"虚伪法律"的空间，只有野兽和树荫——法庭的镜像对立面。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 423–425</span>
+One of the earliest and best of the Robin Hood ballads, the <em>Gest of Robyn Hode</em>, draws similar contrasts between the corrupt world of the king's law courts and the honest life of the forest.<sup>52</sup> Robin welcomes the destitute knight Sir Richard atte Lee to the greenwood and lends him 400 pounds to pay off a debt to the Abbot of St Mary's, York, with no more security than a vow to the Virgin herself, but when Sir Richard arrives at the abbey and pretends to need more time to find the money, he discovers that the abbot has already arranged with the officers of the king's law to confiscate the lands he had pledged against the loan:
+<div class="verse-block">'Thy day is broke', sayd the iustyce,
+   'Londe getest thou none':
+'Now, good syr iustyce, be my frende,
+   And fende me of my fone!'
+
+'I am holde with the abbot', sayd the iustyce,
+   'Both with clothe and fee':
+'Now, good syr sheryf, be my frende!'
+   'Nay, for God', sayd he.
+(stanzas 106 and 107)</div>
+Such blatantly corrupt alliances were far from unusual (in the 1330s, for instance, the Abbot of St Albans retained as his steward a prominent royal justice, John de Cambridge),<sup>53</sup> and stand in stark contrast with what Robin later described as 'our ordre . . . / Vnder the grenë-wode tree' (stanza 197). <mark class="q4">The <em>Gest of Robyn Hode</em> seems to confute the entire system represented by the High Justice and the Sheriff of Nottingham by its picture of what Douglas Gray calls, 'a kind of alternative commonwealth and morality'.<sup>54</sup></mark> Should we suppose that the sylvan escapism of the Robin Hood ballads could have had no counterpart in the actual world of medieval law, we might note a threatening letter cited in a King's Bench case of 1336 addressed by 'Lionel, King of the rout of raveners, to our false and disloyal Richard of Snowshill, greeting without love'. It demands that Richard ('under pain of forfeiting whatever you can forfeit for being against us and our laws') withdraw his support for one of the parties in a current lawsuit, and concludes: 'And if you do not intend to pay attention to our orders, we shall instruct our great sheriff of the North to make the great distress against you, as is said before. Given at our Castle of the North Wind in the Greenwood Tower [a nostre castiel de Bise en la Tour de vert] in the first year of our reign.'<sup>55</sup>
+<div class="fn">52. Child, ed., <em>English and Scottish Political Ballads</em>, iii, pp. 39–89 (no. 117).<br>53. Maddicott, <em>Law and Lordship</em>, p. 35.<br>54. Gray, 'Robin Hood Poems', p. 17.<br>55. Sayles, ed., <em>Select Cases</em> (1958), pp. 93–4.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 Robin Hood</span>
+  <p><strong><em>Gest of Robyn Hode</em>：</strong>Robin 以对圣母的誓言替代法律担保→绿林的信用体系与法庭的腐败形成对照。法官与修道院长公然结盟："我受雇于修道院长，衣食供给都靠他。"</p>
+  <p><strong>"另一种共和国与道德"（Gray）：</strong>绿林秩序否定了整个由大法官和郡长代表的体制。</p>
+  <p><strong>1336年威胁信：</strong>"掠夺者之群的国王 Lionel"模仿王室文书格式发出威胁——"在我们的北风城堡绿林塔颁布，在位第一年"——真实的"绿林法庭"！</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 425</span>
+If the dominant mode in the <em>Gest</em> is escapist, other outlaw poems are made of sterner stuff. True, in the course of rescuing Sir Richard atte Lee, Robin does kill and mutilate the treacherous Sheriff of Nottingham (stanzas 347–9), but in other works we find the outlaw's violent opposition to the representatives of king's law expressed in far more extravagant terms. At the end of <em>Gamelyn</em>,<sup>56</sup> the hero hangs not only his elder brother, the sheriff, but also the justice who sits beside him on the bench, and even the twelve jurors – leaving them all, in a line worthy of Villon, 'to weyuen wiþ ropes and wiþ þe wynd drye' (880). And in <em>Adam Bell, Clym of the Clough, and William of Cloudesly</em><sup>57</sup> the tally is even higher:
+<div class="verse-block">Fyrst the justice and the sheryfe,
+   And the mayre of Caerlel towne;
+Of all the constables and catchipolles,
+   Alyue were left not one.
+
+The baylyes and the bedyls both
+   And the sergeauntes of the law,
+And forty fosters of the fe
+   These outlawes had y-slaw.
+(stanzas 139–40)</div>
+Nothing in the records of King's Bench quite matches this orgy of violence, but as we have seen there were plenty of people ready to threaten the king's justices and some quite prepared to carry out their threats.
+<div class="fn">56. French and Hale, eds., <em>Metrical Romances</em>, pp. 209–35.<br>57. Child, ed., <em>English and Scottish Political Ballads</em>, vol. iii, pp. 14–39 (no. 116).</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 暴力升级</span>
+  <p><strong><em>Gamelyn</em>：</strong>主人公绞死了哥哥、郡长、法官和12名陪审员——"让他们随绳索和风摇摆晾干"。<strong><em>Adam Bell</em>：</strong>杀掉法官、郡长、市长、所有治安官和捕快、法律事务官、40名林务官。虽然王座法庭记录中没有如此极端的暴力，但现实中对法官的威胁和攻击确实普遍。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 425–426</span>
+Though a demand 'that hence forward outlawry should play no part in any legal process' had been made by Wat Tyler in 1381,<sup>58</sup> such sympathy for the outlaw's plight was certainly not confined to the lower ranks of society. Many a real-life outlaw was drawn from the gentry, and there is nothing fanciful about Robin Hood's association with Sir Richard atte Lee in the <em>Gest</em>. Even quite important figures might offer the outlaw support: one of the Folvilles' allies in the Willoughby kidnapping was Sir Robert de Vere, constable of Rockingham Castle and keeper of Rockingham forest; and his subsequent indictment suggests that he was capable of providing very practical assistance:
+<div class="block-quote">Sometimes twenty armed men, sometimes thirty, come to Vere at the castle, and they leave at dawn, or during the night. He shuts the gates on the side facing the town, and they can leave secretly, by a postern. Those bringing victuals to the castle are not allowed to enter, lest they should come to know those armed men.<sup>59</sup></div>
+To judge from some of the original owners of manuscripts containing it, the story of <em>Gamelyn</em> may well have appealed to even more elevated members of society. The poem owes its very survival to its early inclusion among the Chaucer apocrypha, and it was copied into some of the finest and most expensive manuscripts of the <em>Canterbury Tales</em>.
+<div class="fn">58. Galbraith, ed., <em>Anonimalle Chronicle</em>, p. 147.<br>59. Stones, 'Folvilles', p. 124.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q4"><span class="tag">Q4 跨阶层同情</span>
+  <p><strong>上层庇护：</strong>Folville 兄弟的盟友 Sir Robert de Vere（Rockingham城堡总管）为武装人员提供秘密进出通道和补给。<strong>Gamelyn 的读者：</strong>被收入最精美昂贵的《坎特伯雷故事》手稿中——说明亡命徒文学的受众包括社会上层。1381年 Wat Tyler 甚至要求废除一切法律程序中的"宣判为法外之人"（outlawry）。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC XII: Nostalgia p.426 ═══ -->
+<h2 class="section-heading" id="sec12"><span class="sec-num">XII</span> Nostalgia for Archaic <em>Judicia Dei</em> (p. 426)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 426</span>
+<mark class="q5">One of the aspirations Hobsbawm attributes to his social bandits is to re-establish '"the old ways", that is to say fair dealing in a society of oppression',<sup>60</sup></mark> but in the Middle Ages the literary expression of such nostalgia was not restricted to outlaw tales. <mark class="q5">The prominence given to archaic legal forms, such things as ordeal or trial by battle, in the literature of the late Middle Age is very striking, and it can only partly be explained by the dramatic potential inherent in such procedures.</mark> At the time <em>Athelston</em>, for instance, was written down (<em>c.</em> 1400), no one in England had witnessed a formal trial by ordeal for well over a century-and-a-half; after its proscription by the Fourth Lateran Council in 1215, it had fallen rapidly into disuse. Trial by battle, though it remained on the books and was sometimes formally invoked, was almost as much of a rarity for there is no record of anyone actually being put to such proof, at least in a civil action, for the best part of a century before the date of the manuscript of <em>Ywain and Gawain</em> (<em>c.</em> 1400).<sup>61</sup> <mark class="q5">Continental writers like Béroul and Gottfried von Strassburg, to judge from their ironic handling of it, evidently regarded trial by ordeal with some scepticism, and a similar attitude towards trial by battle has been noted in works like <em>Diu Crône</em>, <em>La mort le roi Artu</em>, and even in Chrétien de Troyes' <em>Yvain</em>.<sup>62</sup> It is very difficult to detect any such scepticism about <em>judicia Dei</em> in comparable English romances like <em>Athelston</em>, the <em>Earl of Tolouse</em>, <em>Ywain and Gawain</em>, the <em>Anturs of Arther</em> or <em>Amis and Amiloun</em>.<sup>63</sup></mark>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 核心论点</span>
+  <p><strong>怀旧的第三种回应：</strong>中世纪晚期文学中大量出现已过时百余年的法律形式（神裁1215年废除、决斗审判极罕见）——远超戏剧性所能解释。</p>
+  <p><strong>英国 vs 大陆：</strong>大陆作家（Béroul, Gottfried, Chrétien）以讽刺态度对待 <em>judicia Dei</em>；英国罗曼司（<em>Athelston</em>, <em>Earl of Tolouse</em>, <em>Ywain and Gawain</em>, <em>Anturs of Arther</em>, <em>Amis and Amiloun</em>）则对上帝裁判<strong>毫无怀疑</strong>。</p>
+  <p><strong>解释：</strong>英国对口头民间法的更深依恋→失去它后更强烈的失落感→文学中无讽刺地理想化旧秩序。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 426</span>
+Literary accounts of trial by ordeal usually portray it as a simple process producing unequivocal results in defiance of natural laws. In <em>Athelston</em>, for instance, Earl Egelond's stroll across hot coals leaves him 'vnblemeschyd,
+<div class="fn">60. Hobsbawm, <em>Bandits</em>, p. 55.<br>61. Russell, 'Accoutrements', p. 432.<br>62. See Jillings, 'Ordeal by Combat'; Bloch, <em>Medieval French Literature and Law</em>; and Arthur, 'The Judicium Dei'.<br>63. For <em>Athelston</em> and the <em>Earl of Toulouse</em> see French and Hale, eds., <em>Metrical Romances</em>, pp. 179–205 and 383–419; and for <em>Ywain and Gawain</em> and <em>The Anturs of Arther</em> see Mills, ed.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 文学证据</span>
+  <p><strong><em>Athelston</em> 中的神裁：</strong>Earl Egelond 走过炽热煤炭后"毫发无损"（vnblemeschyd）——文学将神裁呈现为简单、明确、超越自然法则的过程。文本在此处中断（章节结尾）。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC XIII: Trial by Battle and Manifest Justice pp.427–430 ═══ -->
+<h2 class="section-heading" id="sec13"><span class="sec-num">XIII</span> Trial by Battle, Manifest Justice, and Equivocal Oaths (pp. 427–431)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 426–427</span>
+[continued from p. 426] Literary accounts of trial by ordeal usually portray it as a simple process producing unequivocal results in defiance of natural laws. In <em>Athelston</em>, for instance, Earl Egelond's stroll across hot coals leaves him 'vnblemeschyd, foot and hande' (l. 617), and his wife's gives birth in the fire to a stillborn baby and a thriving child, thus producing a literally unambiguous testament of innocence. If these are accounts of ordeal, the romances of <em>Ywain and Gawain</em> and the <em>Anturs of Arther</em> deal with trial by battle. In both works, two friends who fail to recognize one another are allowed by the court to fight, and in both the result is a draw – an outcome which would have been far more likely in real life than the annihilating victories of romance (many a challenged party must have survived battle only at the cost of paying the kind of compensation that folklaw called <em>wergild</em> or <em>bót</em>). These combats may have offered an institutional outlet for a more complex social impulse – one that Jill Mann finds still embodied in Malory's knightly combats – whereby 'opposition becomes a means of achieving union'.<sup>68</sup> Galbraith offers several analogous examples of judicial duels ending in compromise, including one where 'after many attacks and blows' a <em>concordia</em> was reached at the instigation of friends of the parties ('compellentibus amicis').<sup>69</sup> <mark class="q5">The picture of judicial combat in these two romances implies their sympathy with an older mode of dispute resolution, one where 'the answer is not to be found by asking the question: who is right? The answer is to be found by saving the honor of both sides and thereby restoring the right relationship between them.'<sup>70</sup></mark>
+<div class="fn">68. Mann, 'Malory', p. 338.<br>69. Galbraith, 'Death of a Champion', p. 290.<br>70. Berman, 'Background', p. 589.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 决斗审判</span>
+  <p><strong><em>Ywain and Gawain</em> 与 <em>Anturs of Arther</em>：</strong>两部罗曼司中，不认识彼此的朋友在法庭准许下决斗，结果是平局——这在现实中远比罗曼司中的压倒性胜利更常见。决斗可以 concordia 收场。</p>
+  <p><strong>Berman：</strong>"答案不在于'谁是对的'，而在于保全双方荣誉，恢复正确的关系。"——这正是旧民间法的核心逻辑：解决纠纷 ≠ 判定对错。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 428–429</span>
+The situation was rather different in the case of felony and treason trials, where compromise must always have been difficult to achieve and a conclusive outcome was often the best that could be hoped for. Here the social dynamic was even more complex, for though most people must have recognized that, as Thomas Usk puts it, 'many men in batayle ben discomfited and overcome / in a rightful quarel',<sup>71</sup> <mark class="q5">they remained deeply attached to an ideal of manifest justice.</mark> This attachment is particularly clear in a remarkable account given in <em>Gregory's Chronicle</em> of a judicial combat fought between Thomas Whitethorn and James Fisher in Winchester in 1456.<sup>72</sup> Whitethorn was an approver (a convicted felon who sought to save his life by turning informer) whilst Fisher was a tailor who had chosen battle to defend himself against Whitethorn's allegations. There is no question where the chronicler's sympathies lay: he reports that an inquisition had found Fisher to be 'the trewyste laborer in alle that contre, and the moste gentellyste there with' and adds that his neighbours had implored the judge to 'Hange uppe Thome Whythorne, for he ys to stronge to fyght with Jamys Fyscher the trewe man' (p. 201). The brutal contest is described in painful detail, but against all expectations it vindicates Fisher:
+<div class="block-quote">And thenn the fals peler [i.e. Whitethorn] caste that meke innocent downe to the grownde and bote hym by the membrys, that the sely innocent cryde owt. And by happe more thenne strengythe that innocent recoveryd up on hys kneys and toke that false peler by the nose with his tethe and put his thombe in hys yee, that the peler cryde owte and prayde hym of marcy, for he was fals unto God and unto hym. (p. 202)</div>
+As if to heighten the cathartic effect of this dramatic spectacle the chronicler adds that afterwards Fisher 'become an hermyte and with schorte tyme dyde'. There is of course, no way of knowing the true rights and wrongs of the case, but it is striking to see how the narrative has been retrospectively structured to provide a satisfying moral resolution. We should not, however, suppose that this need to see the duel as an expression of manifest justice was restricted to homespun chronicles like Gregory's. Walsingham, for example, describes in detail a judicial duel fought in 1380 between Sir John Annesley and a squire named Thomas Katrington on a charge of treason;<sup>73</sup> though he expresses distaste for the vulgar excitement it generated and fully appreciates the bizarre nature of its conclusion (a prostrate, but still conscious, Annesley was pinned to the earth by the body of his insensible opponent – an outcome which set the judges something of a conundrum), the chronicler still feels compelled to insist that justice had been done: 'the foresaid battle was fought on 20 June', he writes, 'to the delight of the vulgar populace, and to the vexation of traitors' ('communis vulgi gaudio, proditorum dolori').
+<div class="fn">71. Usk, <em>Testament</em>, i.vii, ll. 28–9.<br>72. Ed. Gairdner, pp. 198–202.<br>73. <em>Historia Anglicana</em>, ed., Riley, vol. i, pp. 430–4; for an analysis of the background to this duel see Bellamy, 'Sir John de Annesley'.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 "显明的正义"</span>
+  <p><strong>Whitethorn vs Fisher（1456）：</strong>被定罪的线人 vs 善良裁缝。邻居恳求法官绞死线人（"他太强壮了，善良的 Fisher 打不过他"）。但 Fisher 奇迹般地反败为胜——"靠运气多过力气"。Fisher 后来成为隐修士并很快去世→叙事被回溯性地结构为道德满足感的表达。</p>
+  <p><strong>Annesley vs Katrington（1380）：</strong>Walsingham 记录的叛国决斗。结果荒诞（倒地的 Annesley 被昏迷对手的身体压住），但编年史家仍坚持"正义已经实现"。</p>
+  <p><strong>核心：</strong>人们对"显明的正义"（manifest justice）有深深的执念——即使事实模糊，叙事也必须被重构为道德分明的结局。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 429–430</span>
+In the same vein, the ballad of <em>Sir Aldingar</em> offers a dramatic illustration of how 'falsing neuer doth well!' (stanza 50) when the accuser of an innocent queen, a man as big as a barrel, is defeated by a child apparently only four years old,<sup>74</sup> but earlier poems generally paint right's triumph in rather less startling colours. The <em>Earl of Tolouse</em> offers a particularly interesting example, for its author is far from indifferent to what we might regard as rational proof: when two knights kill a naked man whom they themselves have previously secreted in the empress's chamber and then seek to have her condemned for adultery, an old courtier suggests that the fact that they had given their victim no chance to explain his presence is in itself suspicious (l. 887). And when the earl decides to act as her champion, it is only after going to considerable lengths (which include disguising himself as a monk in order to hear her confession) to assure himself of her innocence. Nevertheless, the hero's subsequent victory in a battle where he is outnumbered two to one reveals a genuine reluctance to admit that God might allow injustice to triumph in so formal a test.
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 罗曼司例证</span>
+  <p><strong><em>Sir Aldingar</em>：</strong>四岁孩子击败"桶般粗壮"的诬告者→"虚伪永远不会得逞"。<strong><em>Earl of Tolouse</em>：</strong>值得注意的是，此罗曼司并非完全忽视"理性证据"——老廷臣质疑两骑士为何不给受害者辩解机会。Earl 也伪装为修士听取皇后忏悔以确认其无辜。但最终仍以1对2的决斗胜利来证明上帝不会让不义在"如此正式的考验"中获胜。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">pp. 429–430</span>
+Of course, some romance situations, particularly those in which Lancelot fights to defend Guinevere, do appear to show right succumbing to might, but even here the champion's victory can often be justified formally: Guinevere has indeed committed adultery, but not, as Mellegeant had rashly asserted, with one of her wounded knights. As in ordeal, <mark class="q5">battle was invariably fought to prove, not a set of facts, but the oath and counter-oath of the principals</mark>, and given the extraordinary respect for legal formalism in the Middle Ages, successful equivocation at this point might have been held to justify an outcome we should normally regard as arbitrary. The canonists were of course implacably opposed to such equivocation,<sup>75</sup> but it seems to have provided the heavy mechanism of folklaw justice with a useful degree of play, allowing it to resolve dangerous confrontations with the necessary appearance of equity. Thus, whenever romance heroes manipulate the outcome of <em>judicia Dei</em> by employing the equivocal oath there is always 'the underlying justification . . . that the opponent is a villain'.<sup>76</sup> In <em>Amis and Amiloun</em>, on the other hand, where the equivocation arises from Amiloun's having secretly taken his sworn brother's place in the combat, this is plainly regarded as a fraudulent tactic – presumably because his opponent (another villain, as it happens) has no reason to suspect any casuistry and no opportunity to expose it. When the victor is subsequently afflicted by leprosy, the English romance, unlike its continental analogues, makes quite explicit the connection between his dishonesty and its punishment.
+<div class="fn">74. Child, ed., <em>English and Scottish Political Ballads</em>, vol. ii, pp. 33–48 (no. 59).<br>75. Gratian, <em>Decretum</em>, ed. Friedberg, p. 886 (Pt. 2, Causa XXII, Quest. V, III Pars).<br>76. Hexter, <em>Equivocal Oaths</em>, p. 39.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 模糊誓言的逻辑</span>
+  <p><strong>关键洞见：</strong>决斗/神裁证明的不是"事实"，而是"誓言与反誓言"。中世纪对法律形式主义的极端尊重意味着，成功的文字技巧可以被认为正当化了我们今天认为是任意的结果。</p>
+  <p><strong>Lancelot/Guinevere：</strong>看似"强权压正义"，但Guinevere确实通奸了——只是<em>没有</em>和Mellegeant指控的那些受伤骑士通奸。誓言在技术上为真。</p>
+  <p><strong><em>Amis and Amiloun</em> 例外：</strong>Amiloun 秘密替换兄弟参加决斗→对手无从察觉、无法质疑→被视为真正的欺诈→胜利者患上麻风病作为惩罚。英国罗曼司（不同于大陆版本）明确将不诚实与惩罚联系起来。</p>
+  </div>
+</div>
+</div>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 430</span>
+<mark class="q5">Whether these later medieval representations of archaic modes of proof are accurate or not is finally, however, of less interest than that such modes should have been regarded with nostalgia by writers who seem to have felt little confidence in the law courts of their own day.</mark> Such nostalgia is easy to sense in Langland's description of how Avarice comes to joust in the king's courts armed with legal technicalities, for instance:
+<div class="verse-block">He Iogged to a Iustice and Iusted in his eere
+And ouertilte al his truþe wiþ 'tak this vp amendement'.
+(b.20.134–5).</div>
+But it also underlies larger narrative structures: the central episode of <em>Sir Gawain and the Green Knight</em>, for example, may easily be read as a displaced <em>judicium Dei</em>, and the climactic crucifixion passus in <em>Piers Plowman</em> presents Christ's redemption in terms of a judicial duel. On the other hand, there is evident irony in the fact that Chaucer's Serjeant should tell a tale of a false accuser struck blind in open court for his perjury; by having a professional lawyer describe a successful ordeal <mark class="q5">Chaucer shows considerable sensitivity to the tension between oral and written law that underlay much of the legal discord of his own time.</mark> It is, thus, doubly ironic that the Serjeant seems originally to have been assigned the <em>Tale of Melibee</em>, a story based on the work of an Italian civil lawyer, Albertano of Brescia.
+</div>
+<div class="annotation-col">
+  <div class="anno-card q5"><span class="tag">Q5 总结</span>
+  <p><strong>核心总结：</strong>这些古老证明方式的文学再现是否"准确"并不重要——重要的是它们被对当代法庭失去信心的作家们<strong>怀旧地对待</strong>。</p>
+  <p><strong>Langland：</strong>Avarice "骑马冲进法庭"，用法律技术性细节（'tak this vp amendement'）推翻真理→普通法形式主义对正义的取代。<em>Sir Gawain</em> 的核心情节可被解读为变形的 <em>judicium Dei</em>；<em>Piers Plowman</em> 以司法决斗的形式呈现基督的救赎。</p>
+  <p><strong>Chaucer：</strong>让职业律师（Man of Law/Serjeant）讲述一个"伪证者当庭被击盲"的成功神裁故事——对口头法与书写法张力的高度敏感。更讽刺的是，这位律师原本被分配的是基于意大利成文法律师 Albertano 作品的《Melibee之歌》。</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEC XIV: Conclusion p.431 ═══ -->
+<h2 class="section-heading" id="sec14"><span class="sec-num">XIV</span> Conclusion (p. 431)</h2>
+
+<div class="para-row">
+<div class="original-text">
+<span class="page-num">p. 431</span>
+<mark class="q1">At the outset I suggested that the study of law might complement literary study by throwing light on some important and neglected aspects of medieval culture.</mark><sup>77</sup> This survey has had to concern itself primarily with narrower questions, but I hope I have also been able to point to ways in which the study of medieval law may help us challenge certain literary stereotypes. 'The history of modes of proof', as Van Caenegem says, 'illuminates the mentality, the attitude towards the supernatural and other aspects of the psychology of ordinary people',<sup>78</sup> and <mark class="q1">literary scholars might do well to think twice before projecting their own preconceptions about such basic matters as the relationship of law and morality, form and substance, intention and guilt, evidence and proof, on to Langland's contemporaries.</mark> These cultural implications seem the most likely to stimulate profitable future research into the field of medieval literature and law.
+<div class="fn">77. See further Gurevich, <em>Categories</em>, pp. 154–209; Cohen, <em>Crossroads of Justice</em>.<br>78. Van Caenegem, <em>Birth of the English Common Law</em>, p. 62.</div>
+</div>
+<div class="annotation-col">
+  <div class="anno-card q1"><span class="tag">Q1 结论</span>
+  <p><strong>段落功能：</strong>全章总结，回扣开头的第三条路径（法律研究照亮文学研究）。</p>
+  <p><strong>核心警告：</strong>文学学者不应将自己关于"法律与道德、形式与实质、意图与罪责、证据与证明"的现代先入之见投射到 Langland 的同代人身上。Van Caenegem："证明方式的历史照亮了普通人的心态、对超自然的态度及其他心理层面。"</p>
+  <p><strong>呼应：</strong>Green 全章最终回到路径三——法律研究与文学研究的互补——作为未来研究最有前景的方向。</p>
+  </div>
+</div>
+</div>
+
+</div><!-- /main-content -->
+
+<!-- ═══════════════ WORKSHEET ═══════════════ -->
+<div class="worksheet" id="worksheet">
+<h2 class="worksheet-title">Answer Index 答题索引</h2>
+<p class="worksheet-subtitle">Bilingual cards · 双语答题卡（核心论点 · 关键证据 · 潜在反驳/局限）</p>
+
+<div class="ws-grid">
+
+<div class="ws-card q1">
+  <span class="ws-tag">Q1</span>
+  <h3>What are the three approaches to studying literature and law?</h3>
+  <p class="ws-q-cn">研究"文学与法律"的三条路径是什么？</p>
+  <div class="ws-section"><div class="ws-section-title">Core Argument 核心论点</div>
+  <p>Green identifies: (1) <strong>Formal</strong> – legal texts as literature (trial as drama, deposition as narrative; limited for medieval England due to language barriers and Year Book aridity); (2) <strong>Thematic</strong> – literary representations of law (fictional trials of Shylock, Josef K); (3) <strong>Parallel Discourse</strong> – law and literature as parallel systems whose formal analysis illuminates what literature leaves implicit. The third is Green's distinctive contribution. 三条路径：①法律文本作为文学形式；②文学中的法律再现；③法律与文学作为平行话语体系。</p></div>
+  <div class="ws-section"><div class="ws-section-title">Key Evidence 关键证据</div>
+  <p>Owen Barfield on jurisprudence &amp; the mind; Stanley Fish on the Constitution; the <em>Mirror of Justices</em> as sole medieval legal text worth literary analysis (called 'romance' by Holdsworth, 'satire' by Pollock &amp; Maitland); Year Book case demonstrating "bloodlessness" of legal records.</p></div>
+  <div class="ws-section"><div class="ws-section-title">Counterarguments 反驳/局限</div>
+  <p>Path 1 is severely limited for medieval England (almost no English-language legal texts). Path 3 is demonstrated only implicitly in the essay. The Year Book's "obliqueness" (Milsom) may be a feature of the genre rather than evidence of its literary poverty.</p></div>
+</div>
+
+<div class="ws-card q2">
+  <span class="ws-tag">Q2</span>
+  <h3>How does Green explain the tension between oral and written law?</h3>
+  <p class="ws-q-cn">Green 如何解释口头法与书写法之间的张力？</p>
+  <div class="ws-section"><div class="ws-section-title">Core Argument 核心论点</div>
+  <p>Medieval people saw law as a single ordering principle uniting divine, natural, and human dimensions (Alford). Green adds: this came from pre-12th-c. customary (oral) law, not just scholastic theology. England uniquely created a <strong>"legal hybrid"</strong> — archaic oral principles institutionalized via Henry II's centralized literate bureaucracy. Fritz Kern: oral law is "young, always believing itself old" (flexible); writing "freezes" procedure → "the dead text retains power over life." 英国"法律混血体"：口头原则 + 书写官僚机器 = 独特张力。</p></div>
+  <div class="ws-section"><div class="ws-section-title">Key Evidence 关键证据</div>
+  <p><em>Mirror of Justices</em> using "sin" for "crime"; Simpson on medieval lawyers lacking modern categories; Berman on folklaw; Milsom: "Year Books are dark because still in the shadow of the old monolithic law suit"; comparison with <em>pays du droit écrit</em> (southern France) vs <em>pays du droit coutumier</em> (northern France) vs England.</p></div>
+  <div class="ws-section"><div class="ws-section-title">Counterarguments 反驳/局限</div>
+  <p>Potentially over-binary (oral=good, written=bad). Kern's framework has been criticized for idealizing pre-literate legal cultures. Continental Europe also had customary law traditions. The hybridization thesis doesn't fully account for legal professionals who benefited from the system.</p></div>
+</div>
+
+<div class="ws-card q3">
+  <span class="ws-tag">Q3</span>
+  <h3>How did literate formalism create injustice in the common law?</h3>
+  <p class="ws-q-cn">书写形式主义如何在普通法中制造了不正义？</p>
+  <div class="ws-section"><div class="ws-section-title">Core Argument 核心论点</div>
+  <p>Folklaw's oral oath-wrangling was frozen into rigid written formulas. By the 14th c., <strong>estoppel</strong> became a weapon of formalistic casuistry: bound not just by words but by <em>implications of what one failed to say</em>. Common law became "a sword for the unscrupulous" (Holdsworth). Medieval people's higher expectations of justice (law should mirror divine order) made their indignation correspondingly greater. 禁止反言原则从口头辩论限制工具变成书写形式主义的压迫武器。</p></div>
+  <div class="ws-section"><div class="ws-section-title">Key Evidence 关键证据</div>
+  <p>Bereford 1319; fish-pond/toft case 1340; Cristine inheritance 1389; violence against Cavendish, Tresilian, Willoughby, Shareshull (detailed chronology of attacks); women publicly denouncing judges as "false traitors"; Ipswich rebellion 1344; Chaucer's Man of Law read against this background.</p></div>
+  <div class="ws-section"><div class="ws-section-title">Counterarguments 反驳/局限</div>
+  <p>Formalism also provided predictability and protection against arbitrary power. Court of Chancery (15th c.) and "trespass on the case" eventually provided relief. Examples are selected for worst abuses; the system also produced routine justice. Violence against judges may reflect political instability as much as judicial failure.</p></div>
+</div>
+
+<div class="ws-card q4">
+  <span class="ws-tag">Q4</span>
+  <h3>What three forms did literary responses to legal injustice take?</h3>
+  <p class="ws-q-cn">文学对法律不公的三种回应形式是什么？</p>
+  <div class="ws-section"><div class="ws-section-title">Core Argument 核心论点</div>
+  <p>(1) <strong>Satire</strong>: conventional, surface-level; can't criticize law itself (seen as divine), only corrupt administrators; solution = just king restoring old laws. (2) <strong>Outlaw romanticism</strong>: greenwood as anti-court; outlaws as Hobsbawm's "social bandits" with a moral code; cross-class sympathy. (3) <strong>Nostalgia for folklaw</strong>: literary prominence of obsolete procedures in English romances without Continental scepticism. 三种：讽刺（表面化）→ 亡命徒浪漫化（绿林=反法庭）→ 怀旧民间法。</p></div>
+  <div class="ws-section"><div class="ws-section-title">Key Evidence 关键证据</div>
+  <p>"London Lickpenny"; "king's ignorance" topos; Gower's <em>Vox Clamantis</em>; Langland's legal documents in <em>Piers Plowman</em> (Mede's charter, Avarice's confession, grasping lord, Folvilles' Laws); <em>Mum and the Sothsegger</em>'s ironic bag of writs; 1381 destruction of archives; "Outlaw's Song of Trailbaston" (legal puns: delay, ploy, chanter, eyrer); <em>Gest of Robyn Hode</em>; <em>Gamelyn</em>; <em>Adam Bell</em>; 1336 Lionel threatening letter; Vere's indictment.</p></div>
+  <div class="ws-section"><div class="ws-section-title">Counterarguments 反驳/局限</div>
+  <p>Categories may oversimplify (Langland straddles all three). Hobsbawmian reading of outlaws debated (Hanawalt sees endemic lawlessness, not social justice). Claim that medieval people couldn't criticize law structurally underestimates works like <em>Mirror of Justices</em>. Outlaw poems' cross-class appeal may reflect literary convention as much as genuine sympathy.</p></div>
+</div>
+
+<div class="ws-card q5">
+  <span class="ws-tag">Q5</span>
+  <h3>Why does English literature show uncritical nostalgia for archaic <em>judicia Dei</em>?</h3>
+  <p class="ws-q-cn">为什么英国文学对古老的"上帝裁判"表现出毫无批判的怀旧？</p>
+  <div class="ws-section"><div class="ws-section-title">Core Argument 核心论点</div>
+  <p>English romances present trial by ordeal/battle as producing <strong>unequivocal, divinely guaranteed results</strong> — no irony, no scepticism. Contrasts sharply with Continental writers (Béroul, Gottfried, Chrétien) who treat these ironically. Reflects England's deeper attachment to oral folklaw and more acute loss from bureaucratic displacement. The Isold episode in Thomas of Britain (no irony) vs. Béroul/Gottfried (ironic) is paradigmatic. 英国罗曼司无讽刺地理想化 judicia Dei，反映对民间法更深的依恋。</p></div>
+  <div class="ws-section"><div class="ws-section-title">Key Evidence 关键证据</div>
+  <p><em>Athelston</em> (Egelond's ordeal by hot coals, "vnblemeschyd"); Thomas of Britain's Isold ordeal (non-ironic); <em>Ywain and Gawain</em> &amp; <em>Anturs of Arther</em> (trial by battle ending in draws — reflecting folklaw's <em>concordia</em>); Whitethorn vs Fisher judicial combat 1456 (Gregory's Chronicle — narrative structured for moral satisfaction); Annesley vs Katrington 1380 (Walsingham); <em>Sir Aldingar</em> (child defeats giant accuser); <em>Earl of Tolouse</em> (rational proof + trial by battle); Lancelot/Guinevere (equivocal oath justified formally); <em>Amis and Amiloun</em> (fraudulent substitution → leprosy as punishment, unique to English version). Langland b.20.134–5 (Avarice jousting in court); <em>Sir Gawain and the Green Knight</em> as displaced <em>judicium Dei</em>; <em>Piers Plowman</em> crucifixion as judicial duel; Chaucer's Serjeant telling an ordeal tale (oral/written law tension). Berman: dispute resolution = "saving honor of both sides," not asking "who is right?" Ordeal abolished 1215; trial by battle rare by 1400.</p></div>
+  <div class="ws-section"><div class="ws-section-title">Counterarguments 反驳/局限</div>
+  <p>Nostalgia may be genre-driven (romance conventions favor miraculous proof) rather than reflecting genuine legal attitudes. Continental romance also contains non-ironic ordeals (selection bias). Sample of English texts is relatively small. English romances may contain subtler ironies that Green's reading misses. The oral/written binary oversimplifies the gradual, negotiated nature of legal change.</p></div>
+</div>
+
+</div><!-- /ws-grid -->
+</div><!-- /worksheet -->
+
+<script>
+const sections=document.querySelectorAll('.section-heading[id]');
+const navLinks=document.querySelectorAll('.chapter-nav a');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(l=>l.classList.remove('active'));const id=e.target.getAttribute('id');const lk=document.querySelector(`.chapter-nav a[href="#${id}"]`);if(lk)lk.classList.add('active')}})},{rootMargin:'-80px 0px -70% 0px',threshold:0});
+sections.forEach(s=>obs.observe(s));
+const ws=document.getElementById('worksheet');
+if(ws){const wo=new IntersectionObserver(e=>{if(e[0].isIntersecting){navLinks.forEach(l=>l.classList.remove('active'));const lk=document.querySelector('.chapter-nav a[href="#worksheet"]');if(lk)lk.classList.add('active')}},{rootMargin:'-80px 0px -70% 0px'});wo.observe(ws)}
+</script>
+</body>
+</html>
